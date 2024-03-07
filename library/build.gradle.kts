@@ -1,9 +1,21 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
+
 plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.compose.multiplatform)
   alias(libs.plugins.mavenPublish)
   alias(libs.plugins.paparazzi)
+}
+
+mavenPublishing {
+  configure(
+    AndroidSingleVariantLibrary(
+      variant = "release",
+      sourcesJar = true,
+      publishJavadocJar = true,
+    )
+  )
 }
 
 kotlin {
